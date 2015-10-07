@@ -4,6 +4,7 @@
 #
 
 from ctypes import cdll
+import platform
 import os
 from shutil import copyfile
 from tempfile import NamedTemporaryFile
@@ -25,7 +26,8 @@ class Session(object):
 
 	def create_private_dll_name(self):
 		self.path = self.get_cddl()
-		namedTempFile = NamedTemporaryFile(prefix='libfoo_', suffix='.so')
+		suffix = os.path.splitext(self.path)[1]
+		namedTempFile = NamedTemporaryFile(prefix='libfoo_', suffix=suffix)
 		private_path = namedTempFile.name
 
 		return private_path
@@ -37,7 +39,13 @@ class Session(object):
 	def get_cddl(self):
 		path = os.path.dirname(__file__)
 		path = os.path.abspath(path)
-		path = os.path.join(path, 'cdll', 'libfoo.so')
+		if platform.system() == 'Darwin':
+			path = os.path.join(path, 'cdll', 'libfoo.so')
+		else:
+			raise Error('Need to build the sample extension')
+
+		if not os.path.exists(path):
+			raise Error('The required path "%s" does not exists or is not accessibly' % (path))
 
 		return path
 
