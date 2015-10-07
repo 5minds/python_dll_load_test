@@ -1,3 +1,7 @@
+#
+# Hints from
+# http://www.python-forum.de/viewtopic.php?f=25&t=31940
+#
 
 from ctypes import cdll
 import os
