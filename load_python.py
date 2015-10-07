@@ -41,6 +41,8 @@ class Session(object):
 		path = os.path.abspath(path)
 		if platform.system() == 'Darwin':
 			path = os.path.join(path, 'cdll', 'libfoo.so')
+		elif platform.system() == 'Windows':
+			path = os.path.join(path, 'libfoo', 'Debug', 'libfoo.dll')
 		else:
 			raise Error('Need to build the sample extension')
 

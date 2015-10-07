@@ -1,3 +1,11 @@
 *.pyc
+
+# unix c-*.so
 */*.o
 */*.so
+
+# windows c-*.dll
+libfoo/Debug
+libfoo/*.suo
+libfoo/*.sdf
+libfoo/*.GhostDoc.xml
