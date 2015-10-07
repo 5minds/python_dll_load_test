@@ -8,4 +8,5 @@
 libfoo/Debug
 libfoo/*.suo
 libfoo/*.sdf
+libfoo/*.opensdf
 libfoo/*.GhostDoc.xml
